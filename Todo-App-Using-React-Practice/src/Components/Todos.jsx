@@ -1,21 +1,12 @@
 import Todo from "./Todo";
+import style from './todos.module.css'
 
-const dummyTodos = [
-  {
-    id: 1,
-    title: "title 1",
-    desc: "description for todo1",
-  },
-  {
-    id: 2,
-    title: "title 2",
-    desc: "description for todo2",
-  },
-];
-export default function Todos() {
+export default function Todos(props) {
   return (
-    <section>
-      <Todo todos={dummyTodos} />
+    <section className={style.todos}>
+      {props.todos.map((todo)=>{
+        return <Todo todo={todo} key={todo.id} onRemoveItem={props.onRemoveTodo}/>
+      })}
     </section>
   );
 }
